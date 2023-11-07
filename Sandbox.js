@@ -1,78 +1,45 @@
-// const name="Nitesh";
-// let date_of_birth=1998;
-// var last_name="Kalyan";
-// //console.log(name,date_of_birth);
-// //console.log(last_name);
-// last_name="Koilada";
-// //console.log(last_name);
-// let fullName=name+last_name;
-// //console.log(fullName);
+const correctAnswers = ['C', 'B', 'A', 'B', 'B'];
+const form = document.querySelector('.quiz-form');
+const result = document.querySelector('.result');
+const submitButton = document.getElementById('submitbutton');
+let score = 0;
+const confirmMessage="Are you sure you want to submit?";
 
-// //maths
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log(submitButton);
 
-// let number1=20**2;
-// let number2=50;
+    if(confirm(confirmMessage)) {
+        // Disabling the submit button
+        submitButton.disabled = true;
+    
+        // Getting user answers
+        const userAnswers = [
+            form.q1.value,
+            form.q2.value,
+            form.q3.value,
+            form.q4.value,
+            form.q5.value
+        ];
 
-// //console.log(number1);
+        // Check the score
+        userAnswers.forEach((answer, index) => {
+            if (answer === correctAnswers[index]) {
+                score += 20;
+            }
+        });
 
-// //templet strings
-
-// let templet_string=`The full name of ${name } is : ${fullName}`;
-// //console.log(templet_string);
-
-// //arrays
-// let array1=["st1", "str2", 1,3];
-// array1.push("str3");
-
-// console.log(array1);
-
-// const greet= (name)=>{
-//  const str22=`function: The full name of ${name } is : ${fullName}`;
-//  return str22;
-// };
-
-
-// console.log(greet(name));
-
-//callback functions
-
-
-
-let data={
-    content:[
-     {first_name:"Nitesh"},
-      {middle_name:"kalyan"},
-      {last_name:"koilada"},
-      {age:25}],
-      login(){
-        this.content.forEach(con=>{
-         console.log(`The user ${con.first_name}  has loggedin`);
-      })}
-};
-data.login();
-const data2= data;
-data.age=26;
-console.log(data.age, data2.age);
-console.log(Math.round(Math.random() *100));
-
-
-
-//ul_html.setAttribute();
-const ul=document.querySelector('ul');
-const full_name=["Nitesh", "Kalyan ", "Koilada"];
-
-let html=``;
-full_name.forEach((person) => {
-     html+=`<li>${person}<li>`;
-     console.log( person);
+        // Displaying the score gradually
+        scrollTo(0, 0);
+        result.className = 'result py-4 bg-light text-center';
+        let output = 0;
+        const timer = setInterval(() => {
+            result.getElementsByTagName('span')[0].innerText = `${output}%`;
+            if (output === score) {
+                clearInterval(timer);
+            } else {
+                output++;
+            }
+        }, 10);
+    }
 });
-
-ul.innerHTML =html;
-const li_item=document.querySelectorAll('li');
-
-li_item.forEach(li_items =>{
-    li_items.addEventListener('click', e =>{
-        console.log(e.de);
-       }); 
-});
-
