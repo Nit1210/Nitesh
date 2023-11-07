@@ -9,7 +9,7 @@ form.addEventListener('submit', e => {
     e.preventDefault();
     console.log(submitButton);
 
-    if(confirm(confirmMessage)) {
+    if(!confirm(confirmMessage)) {
         // Disabling the submit button
         submitButton.disabled = true;
     }
