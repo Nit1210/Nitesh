@@ -5,7 +5,7 @@ let score=0;
 form.addEventListener( 'submit', e =>{
     e.preventDefault();
 
-   
+   alert("Are sure we want to submit?");
     //getting user answers
     const userAnswers=[form.q1.value,form.q2.value,form.q3.value,form.q4.value,form.q5.value];
 
@@ -14,9 +14,14 @@ form.addEventListener( 'submit', e =>{
         if(answers=== correctAnswers[index]){
             score +=20;
         }
-        console.log(score);
+        if(answers[index]!=null){
+            document.getElementById('sumbitbutton').disabled=true;
+           }
+       
+       // console.log(score);
     })
-  
+    
+   
     scrollTo(0,0);
     result.className="result py-4  bg-light text-center";
     let output=0;
@@ -31,7 +36,9 @@ form.addEventListener( 'submit', e =>{
         }
     },10);
     // console.log(result.getElementsByTagName("span")[0].innerText=`${score}%`);
-
+   //disable Submit Button if score is > 20
+  
+   
 
 });
 
