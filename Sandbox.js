@@ -15,6 +15,7 @@ form.addEventListener( 'submit', e =>{
             score +=20;
         }
         if(answers[index]!=null){
+            
             document.getElementById('sumbitbutton').disabled=true;
            }
        
