@@ -3,13 +3,16 @@ const form = document.querySelector('.quiz-form');
 const result = document.querySelector('.result');
 const submitButton = document.getElementById('submitbutton');
 let score = 0;
+const confirmMessage="Are you sure you want to submit?";
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    if (confirm("Are you sure you want to submit?")) {
+    console.log(submitButton);
+
+    if(confirm(confirmMessage)) {
         // Disabling the submit button
         submitButton.disabled = true;
-
+    }
         // Getting user answers
         const userAnswers = [
             form.q1.value,
@@ -38,5 +41,5 @@ form.addEventListener('submit', e => {
                 output++;
             }
         }, 10);
-    }
+    
 });
