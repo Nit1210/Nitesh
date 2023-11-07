@@ -9,10 +9,10 @@ form.addEventListener('submit', e => {
     e.preventDefault();
     console.log(submitButton);
 
-    if(!confirm(confirmMessage)) {
+    if(confirm(confirmMessage)) {
         // Disabling the submit button
         submitButton.disabled = true;
-    }
+    
         // Getting user answers
         const userAnswers = [
             form.q1.value,
@@ -41,5 +41,5 @@ form.addEventListener('submit', e => {
                 output++;
             }
         }, 10);
-    
+    }
 });
